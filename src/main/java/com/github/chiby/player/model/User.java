@@ -1,18 +1,27 @@
 package com.github.chiby.player.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
+import com.querydsl.core.annotations.QueryEntity;
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@QueryEntity
 public class User {
-   @Id String uuid = UUID.randomUUID().toString();
-   String nickname;
+   @Id public String uuid = UUID.randomUUID().toString();
+   public String nickname;
    /**
     * URL pointing to the user's avatar
     */
-   String avatar;
+   public String avatar;
 }

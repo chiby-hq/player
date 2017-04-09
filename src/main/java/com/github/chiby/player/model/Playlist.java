@@ -2,19 +2,35 @@ package com.github.chiby.player.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
+import com.querydsl.core.annotations.QueryEntity;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode
+@QueryEntity
 public class Playlist {
-	@Id String id;
+	public Playlist(String id, String name, User author){
+		this.id = id;
+		this.name = name;
+		this.author = author;
+	}
+	public Playlist(){
+		
+	}
+	
+	@Id public String id = UUID.randomUUID().toString();
 
-	String name;
-	User author;
-    Date creationDate;
+	public String name;
+	public User author;
+	public Date creationDate;
    
-    List<Gadget> gadgets;
+	public List<Gadget> gadgets;
    
 }
