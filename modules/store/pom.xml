@@ -80,7 +80,12 @@
             <artifactId>jmdns</artifactId>
             <version>3.5.1</version>
         </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>com.github.chiby.player</groupId>
+			<artifactId>model</artifactId>
+			<version>[0.1-SNAPSHOT,)</version>
+		</dependency>
+	</dependencies>
 	
 	<dependencyManagement>
 		<dependencies>
