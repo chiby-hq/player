@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<name>Chiby player reactor project</name>
-	<description>$${project.name}</description>
+	<description>${project.name}</description>
     
 	<modules>
 	  <module>modules/model</module>
