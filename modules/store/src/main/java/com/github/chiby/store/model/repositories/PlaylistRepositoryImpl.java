@@ -1,4 +1,4 @@
-package com.github.chiby.player.model.repositories;
+package com.github.chiby.store.model.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

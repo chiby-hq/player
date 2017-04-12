@@ -1,4 +1,4 @@
-package com.github.chiby.player.model.docker;
+package com.github.chiby.store.model.docker;
 
 import java.util.Map;
 import java.util.UUID;

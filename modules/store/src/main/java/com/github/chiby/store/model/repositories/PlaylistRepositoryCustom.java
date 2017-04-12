@@ -1,4 +1,4 @@
-package com.github.chiby.player.model.repositories;
+package com.github.chiby.store.model.repositories;
 
 import com.github.chiby.player.model.Playlist;
 import com.github.chiby.player.model.User;

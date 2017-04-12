@@ -1,4 +1,4 @@
-package com.github.chiby.player;
+package com.github.chiby.store;
 
 import java.util.UUID;
 
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import com.github.chiby.player.model.Playlist;
 import com.github.chiby.player.model.User;
-import com.github.chiby.player.model.repositories.PlaylistRepository;
-import com.github.chiby.player.model.repositories.UserRepository;
+import com.github.chiby.store.model.repositories.PlaylistRepository;
+import com.github.chiby.store.model.repositories.UserRepository;
 
 @Component
 public class DataInitializer implements ApplicationRunner {

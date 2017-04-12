@@ -1,4 +1,4 @@
-package com.github.chiby.player;
+package com.github.chiby.store;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,9 +9,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @EnableMapRepositories
 @EnableSpringDataWebSupport
-public class PlayerApplication {
+public class StoreApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlayerApplication.class, args);
+		SpringApplication.run(StoreApplication.class, args);
 	}
 }

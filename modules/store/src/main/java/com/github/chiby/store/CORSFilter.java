@@ -1,4 +1,4 @@
-package com.github.chiby.player;
+package com.github.chiby.store;
 import org.springframework.stereotype.Component;
  
 import javax.servlet.*;

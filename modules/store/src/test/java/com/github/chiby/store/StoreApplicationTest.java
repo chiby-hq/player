@@ -1,4 +1,4 @@
-package com.github.chiby.player;
+package com.github.chiby.store;
 
 import org.junit.Test;
 
@@ -11,14 +11,14 @@ import static org.junit.Assert.*;
 
 import com.github.chiby.player.model.Playlist;
 import com.github.chiby.player.model.User;
-import com.github.chiby.player.model.repositories.PlaylistRepository;
-import com.github.chiby.player.model.repositories.PlaylistRepositoryCustom;
-import com.github.chiby.player.model.repositories.UserRepository;
+import com.github.chiby.store.model.repositories.PlaylistRepository;
+import com.github.chiby.store.model.repositories.PlaylistRepositoryCustom;
+import com.github.chiby.store.model.repositories.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @EnableMapRepositories
-public class PlayerApplicationTest {
+public class StoreApplicationTest {
 
 	@Autowired
 	UserRepository userRepo;
