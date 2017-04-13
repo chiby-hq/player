@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
-import com.github.chiby.player.model.IGadgetDefinition;
+import com.github.chiby.player.model.IApplicationDefinition;
 import com.github.chiby.player.model.secret.ISecret;
 
 import lombok.Data;
@@ -16,7 +16,7 @@ import lombok.Data;
  *
  */
 @Data
-public class DockerGadgetDefinition implements IGadgetDefinition{
+public class DockerApplicationDefinition implements IApplicationDefinition{
 	@Id UUID uuid;
 	String image;
     ISecret credentials;

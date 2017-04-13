@@ -11,5 +11,5 @@ import lombok.Data;
 public class CatalogCategory {
   @Id UUID uuid = UUID.randomUUID();
   String name;
-  List<Gadget> gadgets;
+  List<Application> gadgets;
 }

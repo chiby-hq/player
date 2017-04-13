@@ -7,9 +7,8 @@ import org.springframework.data.annotation.Id;
 import lombok.Data;
 
 @Data
-public class GadgetRating {
+public class Application {
+
 	@Id UUID uuid;
-	Gadget ratedGadget;
-	User ratedBy;
-	ScoreEnum score;
+	IApplicationDefinition definition;
 }

@@ -31,6 +31,6 @@ public class Playlist {
 	public User author;
 	public Date creationDate;
    
-	public List<Gadget> gadgets;
+	public List<Application> gadgets;
    
 }
