@@ -1,13 +1,16 @@
-package com.github.chiby.store.model.docker;
+package com.github.chiby.player.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.data.annotation.Id;
 
-import com.github.chiby.player.model.IApplicationDefinition;
 import com.github.chiby.player.model.secret.ISecret;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -16,11 +19,27 @@ import lombok.Data;
  *
  */
 @Data
+@Builder
 public class DockerApplicationDefinition implements IApplicationDefinition{
 	@Id UUID uuid;
 	String image;
     ISecret credentials;
     Map<String,String> environment;
-    String tarGzLocation;
-    String gitLocation;
+    List<String> parameters;
+    
+    /**
+     * Return a long string listing all environment variables
+     * @return
+     */
+	public List<String> flattenEnvironment() {
+		if(environment==null){
+			return new ArrayList<String>();
+		}else return environment.entrySet()
+	            .stream()
+	            .map(entry -> entry.getKey() + "=" + entry.getValue()+"")
+	            .collect(Collectors.toList());
+	}
+    
+    
+    
 }
