@@ -36,13 +36,10 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
+			<groupId>com.github.chiby.player</groupId>
+			<artifactId>model</artifactId>
+			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>
-		<dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-        </dependency>
 
 		<dependency>
 			<groupId>com.spotify</groupId>
