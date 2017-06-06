@@ -104,7 +104,7 @@
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-releasetrain</artifactId>
-                <version>Ingalls-SR1</version>
+                <version>Ingalls-SR3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
