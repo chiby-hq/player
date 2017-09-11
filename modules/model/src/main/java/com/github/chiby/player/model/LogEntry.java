@@ -14,16 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Application {
-
-	@Id UUID uuid;
-	String title;
-    User author;
-	String description;
-	
-	Date createdOn;
-	Date lastUpdatedOn;
-	
-	
-	IApplicationDefinition definition;
+public class LogEntry {
+	RunSession runSession;
+	@Id public String uuid = UUID.randomUUID().toString();
+	Date startedAt;
+	String line;
 }

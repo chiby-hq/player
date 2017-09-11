@@ -1,6 +1,7 @@
 package com.github.chiby.player.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
@@ -14,16 +15,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Application {
-
-	@Id UUID uuid;
-	String title;
-    User author;
-	String description;
-	
-	Date createdOn;
-	Date lastUpdatedOn;
-	
-	
-	IApplicationDefinition definition;
+public class RunSession {
+   Application application;
+   @Id public String uuid = UUID.randomUUID().toString();
+   Date startedAt = new Date();
+   Boolean running= false;
+   Boolean initialized=false;
+   List<LogEntry> logEntries;
 }

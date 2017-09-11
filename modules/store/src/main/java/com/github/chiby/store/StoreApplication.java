@@ -7,7 +7,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-@EnableMapRepositories
+@EnableMapRepositories("com.github.chiby.store.model.repositories")
 @EnableSpringDataWebSupport
 public class StoreApplication {
 

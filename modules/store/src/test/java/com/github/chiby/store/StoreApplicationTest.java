@@ -31,8 +31,9 @@ public class StoreApplicationTest {
 		
 		User john = userRepo.findOneByNickname("John");
 		
-		Playlist defaultPlaylist = playlistRepo.findOneByNameAndUser("defaultjon", john);
-		assertNull(defaultPlaylist);
+		assertNotNull(playlistRepo.findOneByNameAndUser("default", john));
+		
+		assertNull(playlistRepo.findOneByNameAndUser("non-existent", john));
 	}
 
 }

@@ -20,7 +20,8 @@ public class DockerExecutorTest {
 	@Test
 	public void test() throws DockerCertificateException, DockerException, InterruptedException {
 		Map<String,String> env = new HashMap<>();
-		env.put("VAR1","Hello");
+		String input = "Hello Docker Executor";
+		env.put("VAR1",input);
 		DockerApplicationDefinition daf = DockerApplicationDefinition.builder()
 				        .image("busybox:latest")
 				        .environment(env)
@@ -31,7 +32,7 @@ public class DockerExecutorTest {
 		DockerExecutor de = new DockerExecutor();
 		String output = de.debug(app);
 		System.out.println("Output " + output);
-		Assert.assertEquals(env.get("VAR1"), output.trim());
+		Assert.assertEquals(input, output.trim());
 	}
 
 }

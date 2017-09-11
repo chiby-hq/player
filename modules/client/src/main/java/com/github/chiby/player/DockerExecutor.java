@@ -2,6 +2,7 @@ package com.github.chiby.player;
 
 import com.github.chiby.player.model.Application;
 import com.github.chiby.player.model.DockerApplicationDefinition;
+import com.github.chiby.player.model.RunSession;
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.DockerClient.LogsParam;
@@ -26,7 +27,6 @@ public class DockerExecutor {
 		docker.waitContainer(creation.id());
 		final String logs;
 		try (LogStream stream = docker.logs(creation.id(), LogsParam.stdout(), LogsParam.stderr());) {
-
 			logs = stream.readFully();
 		}
 
@@ -35,6 +35,27 @@ public class DockerExecutor {
 		docker.removeContainer(creation.id());
 		return (logs);
 
+	}
+	
+	public String start(Application application, RunSession session)
+			throws DockerCertificateException, DockerException, InterruptedException {
+		DockerClient docker = DefaultDockerClient.fromEnv().build();
+		DockerApplicationDefinition dad = (DockerApplicationDefinition) application.getDefinition();
+
+		ContainerConfig config = ContainerConfig.builder().image(dad.getImage()).cmd(dad.getParameters())
+				.env(dad.flattenEnvironment()).build();
+		ContainerCreation creation = docker.createContainer(config);
+
+		docker.startContainer(creation.id());
+		
+
+		// Asynchronously connect the container log to the given run session
+		
+		return creation.id();
+	}
+	
+	public void stop(String containerId){
+		
 	}
 
 }
