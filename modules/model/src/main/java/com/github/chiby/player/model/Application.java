@@ -5,12 +5,14 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.querydsl.core.annotations.QueryEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @AllArgsConstructor
@@ -24,6 +26,11 @@ public class Application {
     User author;
 	String description;
 	String avatar;
+	
+	@JsonIgnore	String contents;
+	@JsonIgnore String generatedContents;
+	
+	ApplicationTypeEnum type;
 	
 	Date createdOn;
 	Date lastUpdatedOn;

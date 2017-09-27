@@ -20,6 +20,7 @@ public class RunSession {
    @Id public String uuid = UUID.randomUUID().toString();
    Date startedAt = new Date();
    Boolean running= false;
+   Boolean stopped = true;
    Boolean initialized=false;
    List<LogEntry> logEntries;
 }
