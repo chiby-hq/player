@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
+import com.github.chiby.player.model.Application.ApplicationBuilder;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,10 +16,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class RunSession {
    Application application;
-   @Id public String uuid = UUID.randomUUID().toString();
+   @Id public UUID uuid = UUID.randomUUID();
    Date startedAt = new Date();
    Boolean running= false;
    Boolean stopped = true;

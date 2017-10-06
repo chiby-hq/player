@@ -17,11 +17,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 @QueryEntity
 public class Application {
 
-	@Id UUID uuid;
+	@Id UUID uuid = UUID.randomUUID();
 	String title;
     User author;
 	String description;
