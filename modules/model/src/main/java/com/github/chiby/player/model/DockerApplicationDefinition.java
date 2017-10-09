@@ -1,7 +1,6 @@
 package com.github.chiby.player.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -9,7 +8,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.data.annotation.Id;
 
-import com.github.chiby.player.model.Application.ApplicationBuilder;
 import com.github.chiby.player.model.secret.ISecret;
 
 import lombok.Builder;

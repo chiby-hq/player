@@ -6,8 +6,6 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
-import com.github.chiby.player.model.Application.ApplicationBuilder;
-
 import lombok.Builder;
 import lombok.Data;
 

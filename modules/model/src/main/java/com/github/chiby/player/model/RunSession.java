@@ -6,8 +6,6 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
-import com.github.chiby.player.model.Application.ApplicationBuilder;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,8 +19,10 @@ public class RunSession {
    Application application;
    @Id public UUID uuid = UUID.randomUUID();
    Date startedAt = new Date();
+   Date stoppedAt;
    Boolean running= false;
    Boolean stopped = true;
    Boolean initialized=false;
    List<LogEntry> logEntries;
+   String executionId;
 }
