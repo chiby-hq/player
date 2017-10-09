@@ -5,8 +5,6 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
-import com.github.chiby.player.model.Application.ApplicationBuilder;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,5 +18,6 @@ public class LogEntry {
 	RunSession runSession;
 	@Id public String uuid = UUID.randomUUID().toString();
 	Date startedAt;
+	Boolean error;
 	String line;
 }
