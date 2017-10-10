@@ -35,6 +35,8 @@ public class DockerExecutorTest {
 	@Mock
 	RunSessionRepository runSessionRepository;
 	
+	String baseImage = System.getProperty("test.chiby.client.base.image", "busybox:latest");
+	
 //	@Test
 //	public void testSimpleDebug() throws DockerCertificateException, DockerException, InterruptedException {
 //		Map<String,String> env = new HashMap<>();
@@ -62,7 +64,7 @@ public class DockerExecutorTest {
 	@Test
 	public void testLogFlushing() throws Exception{
 		DockerApplicationDefinition daf = DockerApplicationDefinition.builder()
-		        .image("busybox:latest")
+		        .image(baseImage)
 		        .parameters(Arrays.asList((new String[]{"sh","-c","echo normal && (>&2 echo error) && echo normal && sleep 1 && echo normal && echo normal "}))).build();
 		Application app =  Application.builder().uuid(UUID.randomUUID())
 				                                .definition(daf).build();
@@ -85,7 +87,7 @@ public class DockerExecutorTest {
 	@Test
 	public void testContainerStopping() throws Exception{
 		DockerApplicationDefinition daf = DockerApplicationDefinition.builder()
-		        .image("busybox:latest")
+		        .image(baseImage)
 		        .parameters(Arrays.asList((new String[]{"sh","-c","echo STARTED && sleep 20 && echo FINISHED"}))).build();
 		Application app =  Application.builder().uuid(UUID.randomUUID())
 				                                .definition(daf).build();
