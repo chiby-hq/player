@@ -5,16 +5,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,6 +37,7 @@ import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.DockerClient.AttachParameter;
 import com.spotify.docker.client.DockerClient.LogsParam;
+import com.spotify.docker.client.LogMessage;
 import com.spotify.docker.client.LogStream;
 import com.spotify.docker.client.exceptions.DockerCertificateException;
 import com.spotify.docker.client.exceptions.DockerException;
@@ -54,9 +63,9 @@ public class DockerExecutor {
 	LogEntryRepository logEntryRepository;
 
 	ExecutorService executor = Executors.newFixedThreadPool(3);
+	
 
 	Map<String, ScheduledExecutorService> stdlogFlushersMap = new HashMap<>();
-	Map<String, ScheduledExecutorService> stderrFlushersMap = new HashMap<>();
 
 	public String debug(Application application)
 			throws DockerCertificateException, DockerException, InterruptedException {
@@ -94,6 +103,8 @@ public class DockerExecutor {
 		docker.startContainer(creation.id());
 
 		session.setExecutionId(creation.id());
+		session.setRunning(true);
+		session.setStopped(false);
 		runSessionRepository.save(session);
 
 		try {
@@ -101,45 +112,50 @@ public class DockerExecutor {
 			final PipedInputStream stderr = new PipedInputStream();
 			final PipedOutputStream stdout_pipe = new PipedOutputStream(stdout);
 			final PipedOutputStream stderr_pipe = new PipedOutputStream(stderr);
-
-			executor.submit(new Callable<Void>() {
-				@Override
-				public Void call() throws Exception {
-					docker.attachContainer(creation.id(), AttachParameter.LOGS, AttachParameter.STDOUT,
-							AttachParameter.STDERR, AttachParameter.STREAM).attach(stdout_pipe, stderr_pipe);
-					return null;
-				}
-			});
 			
-		    scheduleLogFlusher(session, creation.id(), stdout, stdlogFlushersMap, false);
-		    
-			scheduleLogFlusher(session, creation.id(), stderr, stderrFlushersMap, true);
+			executor.submit(new Callable<Boolean>() {
+			@Override
+			public Boolean call() throws Exception {
+				docker.attachContainer(creation.id(), AttachParameter.LOGS, AttachParameter.STDOUT,
+						AttachParameter.STDERR, AttachParameter.STREAM).attach(stdout_pipe, stderr_pipe);
+				return true;
+			  }
+		    });
+			ScheduledExecutorService schedulingExecutorService = Executors.newScheduledThreadPool(2);
+			stdlogFlushersMap.put(creation.id(), schedulingExecutorService);
+			scheduleLogFlusher(session, creation.id(), schedulingExecutorService, stdout, false);
+			scheduleLogFlusher(session, creation.id(), schedulingExecutorService, stderr, true);
 
-
-		} catch (IOException ioe) {
-			log.log(Level.FINE, "Could not attach to container " + creation.id() + " log output", ioe);
+		} catch (Exception e) {
+			log.log(Level.FINE, "Could not attach to container " + creation.id(), e);
 		}
 
 		return creation.id();
 	}
 
-	private void scheduleLogFlusher(RunSession session, final String creationId,
-			final PipedInputStream stdout, Map<String, ScheduledExecutorService> map, boolean stdErr) {
-		final BufferedReader readStdout = new BufferedReader(new InputStreamReader(stdout));
-		ScheduledExecutorService stdLogFlusher = Executors.newSingleThreadScheduledExecutor();
-		map.put(creationId, stdLogFlusher);
-		stdLogFlusher.schedule(new Runnable() {
+	private void scheduleLogFlusher(RunSession session, final String creationId,final ScheduledExecutorService schedulingExecutorService,
+			final PipedInputStream stdout, final boolean stdErr) {
+		
+		schedulingExecutorService.schedule(new Runnable(){
 			@Override
-			public void run() {
-				// Convert output lines to LogEntries
-				java.util.List<LogEntry> entries = readStdout.lines()
-						.map(line -> LogEntry.builder().line(line).error(stdErr).runSession(session).build())
-						.collect(Collectors.toList());
-				logEntryRepository.save(entries);
-			}
-		}, 500, TimeUnit.MILLISECONDS);
+			public void run()  {
+				Scanner is = new Scanner(stdout);
+				try{
+					while(is.hasNext()){
+						String line = is.next();
+						System.out.println("OUTPUT "+line);
+						logEntryRepository.save(LogEntry.builder()
+	                    .line(line)
+	                    .runSession(session)
+	                    .error(stdErr).build());
+					}
+				}finally{
+				  is.close();
+				}
+			  }
+		}, 100, TimeUnit.MILLISECONDS);
 	}
-
+	
 	public void stop(RunSession session) throws DockerCertificateException, DockerException, InterruptedException {
 		DockerClient docker = DefaultDockerClient.fromEnv().build();
 
@@ -155,18 +171,17 @@ public class DockerExecutor {
 				docker.removeContainer(session.getExecutionId());
 			}
 			String executionId = session.getExecutionId();
-			// In any case, cancel and remove any left over log flushing executors
-			if(stdlogFlushersMap.containsKey(executionId)){
-				stdlogFlushersMap.get(executionId).shutdown();
-				stdlogFlushersMap.remove(executionId);
-			}
-			// In any case, cancel and remove any left over stderr flushing executors
-			if(stderrFlushersMap.containsKey(executionId)){
-				stderrFlushersMap.get(executionId).shutdown();
-				stderrFlushersMap.remove(executionId);
+			
+			try{
+				// In any case, cancel and remove any left over log flushing executors
+				if(stdlogFlushersMap.containsKey(executionId)){
+					stdlogFlushersMap.get(executionId).shutdown();
+				}
+			}catch(Exception e){
+				log.warning("Could not interrupt all log flushing schedulers for container "+executionId);
 			}
 		} else {
-			log.warning("Cannot stop session " + session.uuid + " : No execution id !");
+			log.info("Cannot stop session " + session.uuid + " : No execution id !");
 		}
 	}
 
