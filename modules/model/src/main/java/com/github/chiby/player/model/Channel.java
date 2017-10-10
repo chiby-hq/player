@@ -1,6 +1,5 @@
 package com.github.chiby.player.model;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 

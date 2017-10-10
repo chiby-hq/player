@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.querydsl.core.annotations.QueryEntity;
 
 import lombok.AllArgsConstructor;
@@ -27,8 +26,8 @@ public class Application {
 	String description;
 	String avatar;
 	
-	@JsonIgnore	String contents;
-	@JsonIgnore String generatedContents;
+	String contents;
+	String generatedContents;
 	
 	ApplicationTypeEnum type;
 	

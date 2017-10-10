@@ -1,16 +1,21 @@
 package client;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnit44Runner;
-import static org.mockito.Mockito.*;
+import org.mockito.runners.MockitoJUnitRunner;
+
 import com.github.chiby.player.DockerExecutor;
 import com.github.chiby.player.model.Application;
 import com.github.chiby.player.model.DockerApplicationDefinition;
@@ -20,11 +25,9 @@ import com.github.chiby.store.model.repositories.LogEntryRepository;
 import com.github.chiby.store.model.repositories.RunSessionRepository;
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
-import com.spotify.docker.client.exceptions.DockerCertificateException;
-import com.spotify.docker.client.exceptions.DockerException;
 import com.spotify.docker.client.messages.ContainerInfo;
 
-@RunWith(MockitoJUnit44Runner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class DockerExecutorTest {
 	@Mock
 	LogEntryRepository logEntryRepository;
