@@ -25,4 +25,6 @@ public class RunSession {
    Boolean initialized=false;
    List<LogEntry> logEntries;
    String executionId;
+   String exitMessage;
+   Integer exitCode;
 }

@@ -67,29 +67,29 @@ public class DockerExecutor {
 
 	Map<String, ScheduledExecutorService> stdlogFlushersMap = new HashMap<>();
 
-	public String debug(Application application)
-			throws DockerCertificateException, DockerException, InterruptedException {
-		DockerClient docker = DefaultDockerClient.fromEnv().build();
-		DockerApplicationDefinition dad = (DockerApplicationDefinition) application.getDefinition();
-
-		ContainerConfig config = ContainerConfig.builder().image(dad.getImage()).cmd(dad.getParameters())
-				.env(dad.flattenEnvironment()).build();
-		ContainerCreation creation = docker.createContainer(config);
-
-		docker.startContainer(creation.id());
-
-		docker.waitContainer(creation.id());
-		final String logs;
-		try (LogStream stream = docker.logs(creation.id(), LogsParam.stdout(), LogsParam.stderr());) {
-			logs = stream.readFully();
-		}
-
-		docker.stopContainer(creation.id(), 5);
-
-		docker.removeContainer(creation.id());
-		return (logs);
-
-	}
+//	public String debug(Application application)
+//			throws DockerCertificateException, DockerException, InterruptedException {
+//		DockerClient docker = DefaultDockerClient.fromEnv().build();
+//		DockerApplicationDefinition dad = (DockerApplicationDefinition) application.getDefinition();
+//
+//		ContainerConfig config = ContainerConfig.builder().image(dad.getImage()).cmd(dad.getParameters())
+//				.env(dad.flattenEnvironment()).build();
+//		ContainerCreation creation = docker.createContainer(config);
+//
+//		docker.startContainer(creation.id());
+//
+//		docker.waitContainer(creation.id());
+//		final String logs;
+//		try (LogStream stream = docker.logs(creation.id(), LogsParam.stdout(), LogsParam.stderr());) {
+//			logs = stream.readFully();
+//		}
+//
+//		docker.stopContainer(creation.id(), 3);
+//
+//		docker.removeContainer(creation.id());
+//		return (logs);
+//
+//	}
 
 	public String start(Application application, RunSession session)
 			throws DockerCertificateException, DockerException, InterruptedException {
@@ -156,21 +156,22 @@ public class DockerExecutor {
 		}, 100, TimeUnit.MILLISECONDS);
 	}
 	
-	public void stop(RunSession session) throws DockerCertificateException, DockerException, InterruptedException {
+	public void stop(RunSession session, Boolean removeContainer) throws DockerCertificateException, DockerException, InterruptedException {
 		DockerClient docker = DefaultDockerClient.fromEnv().build();
 
 		if (session.getExecutionId() != null) {
+			String executionId = session.getExecutionId();
 			// Double check that the session hasn't yet been marked as stopped
-			RunSession sessionEntity = runSessionRepository.findOneByExecutionIdAndRunning(session.getExecutionId(),
-					true);
+			RunSession sessionEntity = runSessionRepository.findOneByExecutionIdAndRunning(executionId,	true);
 			if (sessionEntity != null) {
-				docker.stopContainer(session.getExecutionId(), 3);
+				docker.stopContainer(session.getExecutionId(),1);
 				sessionEntity.setRunning(false);
 				sessionEntity.setStoppedAt(new Date());
 				runSessionRepository.save(sessionEntity);
-				docker.removeContainer(session.getExecutionId());
+				if(removeContainer){
+					docker.removeContainer(session.getExecutionId());
+				}
 			}
-			String executionId = session.getExecutionId();
 			
 			try{
 				// In any case, cancel and remove any left over log flushing executors
