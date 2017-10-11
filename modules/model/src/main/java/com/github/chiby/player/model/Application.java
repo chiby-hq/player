@@ -34,6 +34,8 @@ public class Application {
 	Date createdOn;
 	Date lastUpdatedOn;
 	
+	boolean template = false;
+	
 	
 	IApplicationDefinition definition;
 }
