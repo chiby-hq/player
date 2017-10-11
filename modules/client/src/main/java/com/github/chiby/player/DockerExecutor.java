@@ -2,6 +2,7 @@ package com.github.chiby.player;
 
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+import java.nio.file.Path;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.logging.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.github.chiby.player.model.Application;
+import com.github.chiby.player.model.ApplicationTypeEnum;
 import com.github.chiby.player.model.DockerApplicationDefinition;
 import com.github.chiby.player.model.LogEntry;
 import com.github.chiby.player.model.RunSession;
@@ -27,6 +29,7 @@ import com.spotify.docker.client.DockerClient.AttachParameter;
 import com.spotify.docker.client.exceptions.DockerCertificateException;
 import com.spotify.docker.client.exceptions.DockerException;
 import com.spotify.docker.client.messages.ContainerConfig;
+import com.spotify.docker.client.messages.ContainerConfig.Builder;
 import com.spotify.docker.client.messages.ContainerCreation;
 
 import lombok.AllArgsConstructor;
@@ -37,7 +40,7 @@ import lombok.extern.java.Log;
 @Log
 @NoArgsConstructor
 @AllArgsConstructor
-public class DockerExecutor {
+public class DockerExecutor implements IApplicationExecutor {
 
 	@Autowired
 	@Setter
@@ -76,13 +79,19 @@ public class DockerExecutor {
 //
 //	}
 
-	public String start(Application application, RunSession session)
-			throws DockerCertificateException, DockerException, InterruptedException {
+	public String start(Application application, RunSession session, Path applicationHome)
+			throws Exception {
 		final DockerClient docker = DefaultDockerClient.fromEnv().build();
-		DockerApplicationDefinition dad = (DockerApplicationDefinition) application.getDefinition();
 
-		ContainerConfig config = ContainerConfig.builder().image(dad.getImage()).cmd(dad.getParameters())
-				.env(dad.flattenEnvironment()).build();
+		Builder configBuilder = ContainerConfig.builder()
+				                 .image(application.getBaseImage())
+				                 .cmd(application.getParameters())
+				                 .env(application.flattenEnvironment());
+		if(applicationHome != null){
+			configBuilder.addVolume(applicationHome.toString()+":/opt");
+		}
+		
+		ContainerConfig config = configBuilder.build();
 		final ContainerCreation creation = docker.createContainer(config);
 
 		docker.startContainer(creation.id());
