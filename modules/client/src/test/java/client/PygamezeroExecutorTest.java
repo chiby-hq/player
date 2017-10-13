@@ -59,7 +59,7 @@ public class PygamezeroExecutorTest {
 						"quit()").getBytes());
 
 		RunSession session = new RunSession();
-		session.setApplication(app);
+		session.setApplicationUUID(app.getUuid());
 		pgze.start(app, session, tempDirectory);
 
 		// Thread.sleep(500);
@@ -85,7 +85,7 @@ public class PygamezeroExecutorTest {
 						"quit()").getBytes());
 
 		RunSession session = new RunSession();
-		session.setApplication(app);
+		session.setApplicationUUID(app.getUuid());
 
 		pgze.start(app, session, tempDirectory);
 
@@ -115,7 +115,7 @@ public class PygamezeroExecutorTest {
 						"sys.exit(1)").getBytes());
 
 		RunSession session = new RunSession();
-		session.setApplication(app);
+		session.setApplicationUUID(app.getUuid());
 		
 		when(runSessionRepository.findOneByExecutionIdAndRunning(any(), eq(true))).thenReturn(session);
 		

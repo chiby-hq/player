@@ -43,7 +43,9 @@ public class PygamezeroExecutor implements IApplicationExecutor {
 
 		ProcessBuilder pBuilder = new ProcessBuilder("pgzrun", ApplicationTypeConstants.PYTHON_APPLICATION_PY);
 		pBuilder.directory(applicationHome.toFile());
-		pBuilder.environment().putAll(application.getEnvironment());
+		if(application.getEnvironment()!=null){
+			pBuilder.environment().putAll(application.getEnvironment());
+		}
 
 		////////////////////////
 		// In Java 8 there is no portable way to obtain the process ID

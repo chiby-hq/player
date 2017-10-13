@@ -56,7 +56,7 @@ public class DockerExecutorTest {
 		de.setRunSessionRepository(runSessionRepository);
 		
 		RunSession session = new RunSession();
-		session.setApplication(app);
+		session.setApplicationUUID(app.getUuid());
 		de.start(app, session, null);
 		
 		Thread.sleep(500);
@@ -78,7 +78,7 @@ public class DockerExecutorTest {
 		de.setRunSessionRepository(runSessionRepository);
 		
 		RunSession session = new RunSession();
-		session.setApplication(app);
+		session.setApplicationUUID(app.getUuid());
 
 		de.start(app, session, null);
 

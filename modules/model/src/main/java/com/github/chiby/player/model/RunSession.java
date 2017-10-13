@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class RunSession {
-   Application application;
+   UUID applicationUUID;
    @Id public UUID uuid = UUID.randomUUID();
    Date startedAt = new Date();
    Date stoppedAt;
