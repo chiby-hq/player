@@ -10,5 +10,5 @@ import com.github.chiby.player.model.Application;
 @RepositoryRestResource()
 public interface ApplicationRepository extends PagingAndSortingRepository<Application, String>, QueryDslPredicateExecutor<Application>{
 
-	Application findOneByName(@Param("name") String name);
+	Application findOneByTitle(@Param("title") String title);
 }
