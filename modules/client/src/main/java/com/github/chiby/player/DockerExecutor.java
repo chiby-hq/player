@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -138,10 +139,10 @@ public class DockerExecutor implements IApplicationExecutor {
 					while(is.hasNext()){
 						String line = is.next();
 						System.out.println("OUTPUT "+line);
-						logEntryRepository.save(LogEntry.builder()
-	                    .line(line)
-	                    .runSession(session)
-	                    .error(stdErr).build());
+//						logEntryRepository.save(LogEntry.builder()
+//	                    .line(line)
+//	                    .runSession(session)
+//	                    .error(stdErr).build());
 					}
 				}finally{
 				  is.close();

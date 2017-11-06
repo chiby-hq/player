@@ -2,8 +2,10 @@ package com.github.chiby.player;
 
 import java.io.InputStream;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
@@ -115,10 +117,16 @@ public class PygamezeroExecutor implements IApplicationExecutor {
 		public void run() {
 			Scanner scanner = new Scanner(is);
 			try {
+				List<LogEntry> lines = new ArrayList<>();
 				while (scanner.hasNext()) {
 					String line = scanner.nextLine();
-					logEntryRepository.save(LogEntry.builder().line(line).runSession(session).error(stdErr).build());
+					lines.add(LogEntry.builder().line(line).error(stdErr).build());
 				}
+				if(session.getLogEntries() == null){
+					session.setLogEntries(new ArrayList<>());
+				}
+				session.getLogEntries().addAll(lines);
+				runSessionRepository.save(session);
 			} catch (Exception e) {
 				log.log(Level.WARNING, "Output interrupted for process " + processId, e);
 			} finally {

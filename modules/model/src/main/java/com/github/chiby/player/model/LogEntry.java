@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class LogEntry {
-	RunSession runSession;
+//	RunSession runSession;
 	@Id public String uuid = UUID.randomUUID().toString();
 	Date startedAt;
 	Boolean error;
