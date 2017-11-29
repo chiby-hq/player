@@ -55,7 +55,7 @@ public class PygamezeroExecutorTest {
 		Files.write(appPyFile,
 				String.join("\n", "import time", "WIDTH=10", "HEIGHT=10", "def draw():", "  screen.fill((128,0,0))",
 						"print('OUTPUT',flush=True)", "print('OUTPUT',flush=True)", "print('OUTPUT',flush=True)",
-						"time.sleep(1)", "print('OUTPUT',flush=True)", "print('OUTPUT',flush=True)", "time.sleep(1)",
+						"time.sleep(0.5)", "print('OUTPUT',flush=True)", "print('OUTPUT',flush=True)", "time.sleep(0.5)",
 						"quit()").getBytes());
 
 		RunSession session = new RunSession();
@@ -64,10 +64,12 @@ public class PygamezeroExecutorTest {
 
 		// Thread.sleep(500);
 		// verify(logEntryRepository, times(3)).save((LogEntry)any());
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		// In total, we should have saved five lines of output
-		verify(logEntryRepository, times(5)).save((LogEntry) any());
+//		verify(logEntryRepository, times(1)).save((LogEntry) any());
+		verify(runSessionRepository, times(3)).save((RunSession) any());
+//		assertEquals(5, logEntryRepository.count());
 	}
 
 	@Test
@@ -129,10 +131,10 @@ public class PygamezeroExecutorTest {
 		Thread.sleep(3000);
 
 		// At this stage, the runSession should have been marked as stopped
-		verify(runSessionRepository, times(2)).save(runSessionCaptor.capture());
+		verify(runSessionRepository, times(4)).save(runSessionCaptor.capture());
 		
 		List<RunSession> captured = runSessionCaptor.getAllValues();
-		assertEquals(2, captured.size());
+		assertEquals(4, captured.size());
 		assertEquals(false, captured.get(1).getRunning());
 		assertEquals((Integer)1, captured.get(1).getExitCode());
 		
