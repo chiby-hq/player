@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chiby.player</groupId>
+        <groupId>com.github.chibyhq.player</groupId>
         <artifactId>boot-parent</artifactId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../../poms/boot-parent</relativePath>
@@ -38,12 +38,12 @@
 		</dependency>
 				
 		<dependency>
-			<groupId>com.github.chiby.player</groupId>
+			<groupId>com.github.chibyhq.player</groupId>
 			<artifactId>model</artifactId>
 			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.chiby.player</groupId>
+			<groupId>com.github.chibyhq.player</groupId>
 			<artifactId>repositories</artifactId>
 			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>
