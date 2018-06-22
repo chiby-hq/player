@@ -11,6 +11,28 @@
 	<name>Chiby Player :: reactor project</name>
 	<description>${project.name}</description>
     
+    <url>https://github.com/chiby-hq/player</url>
+    
+    <organization>
+      <name>CERN Micro Club</name>
+      <url>http://cern.ch/cmc</url>
+    </organization>
+    
+    <licenses>
+      <license>
+        <name>GPLv3</name>
+        <url>https://opensource.org/licenses/GPL-3.0</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
+    
+    <scm>
+      <url>https://github.com/chiby-hq/player</url>
+      <connection>scm:git:git://github.com/chiby-hq/player.git</connection>
+      <developerConnection>scm:git:git://github.com/chiby-hq/player.git</developerConnection>
+      <tag>HEAD</tag>
+    </scm>
+
 	<modules>
 	  <module>poms/oss-parent</module>
 	  <module>poms/boot-parent</module>
