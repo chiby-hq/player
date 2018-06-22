@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.github.chibyhq.player</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.3-SNAPSHOT</version>
         <relativePath>../oss-parent</relativePath>
 	</parent>
 	
     <artifactId>boot-parent</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Chiby Player :: Spring Boot parent POM</name>
 	<description>${project.name}</description>

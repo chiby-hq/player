@@ -4,7 +4,7 @@
 
 	<groupId>com.github.chibyhq.player</groupId>
 	<artifactId>reactor</artifactId>
-	<version>0.2-SNAPSHOT</version>
+	<version>0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Chiby Player :: reactor project</name>
