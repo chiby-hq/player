@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>com.github.chiby.player</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    
+	<packaging>pom</packaging>
+	<name>Chiby Player :: OSS parent POM</name>
+	<description>${project.name}</description>
+    <url>https://github.com/chiby-hq/player</url>
+    
+    <organization>
+      <name>CERN Micro Club</name>
+      <url>http://cern.ch/cmc</url>
+    </organization>
+    
+    <licenses>
+      <license>
+        <name>GPLv3</name>
+        <url>https://opensource.org/licenses/GPL-3.0</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
+    
+    <scm>
+      <url>https://github.com/chiby-hq/player</url>
+      <connection>scm:git:git://github.com/chiby-hq/player.git</connection>
+      <developerConnection>scm:git:git://github.com/chiby-hq/player.git</developerConnection>
+      <tag>HEAD</tag>
+    </scm>
+    
+    <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-releasetrain</artifactId>
+				<version>Ingalls-SR3</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.5.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+		     		<groupId>org.springframework.cloud</groupId>
+		     		<artifactId>spring-cloud-dependencies</artifactId>
+		     		<version>Dalston.RC1</version>
+		     		<type>pom</type>
+		     		<scope>import</scope>
+             </dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+    <repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+    
+</project>

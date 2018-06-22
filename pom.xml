@@ -8,10 +8,12 @@
 	<version>1</version>
 	<packaging>pom</packaging>
 
-	<name>Chiby player reactor project</name>
+	<name>Chiby Player :: reactor project</name>
 	<description>${project.name}</description>
     
 	<modules>
+	  <module>poms/oss-parent</module>
+	  <module>poms/boot-parent</module>
 	  <module>modules/model</module>
 	  <module>modules/repositories</module>
 	  <!--module>modules/store</module-->

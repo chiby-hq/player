@@ -3,33 +3,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.chiby.player</groupId>
+    <parent>
+        <groupId>com.github.chiby.player</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>../../poms/oss-parent</relativePath>
+	</parent>
+	
 	<artifactId>model</artifactId>
-	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Chiby player model</name>
-	<description>Provides model objects for the Chiby store</description>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+	<name>Chiby Player :: Model</name>
+	<description>Provides model objects for Player</description>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
@@ -55,18 +42,6 @@
 
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-releasetrain</artifactId>
-				<version>Ingalls-SR3</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -88,15 +63,5 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 </project>

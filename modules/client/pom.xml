@@ -3,25 +3,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.chiby.player</groupId>
+    <parent>
+        <groupId>com.github.chiby.player</groupId>
+        <artifactId>boot-parent</artifactId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>../../poms/boot-parent</relativePath>
+	</parent>
+	
 	<artifactId>client</artifactId>
-	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Chiby player client</name>
-	<description>Provides a lightweight client to execute playlists</description>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+	<name>Chiby Player :: Client API</name>
+	<description>Provides a lightweight client API to execute playlists and monitor run sessions</description>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
 		<test.chiby.client.base.image>busybox:latest</test.chiby.client.base.image>
 	</properties>
 
@@ -83,15 +78,5 @@
 	    </plugins>
 	  </build>
 
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	
 </project>
