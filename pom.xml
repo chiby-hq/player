@@ -29,7 +29,7 @@
     <scm>
       <url>https://github.com/chiby-hq/player</url>
       <connection>scm:git:git://github.com/chiby-hq/player.git</connection>
-      <developerConnection>scm:git:git://github.com/chiby-hq/player.git</developerConnection>
+      <developerConnection>scm:git:ssh://github.com/chiby-hq/player.git</developerConnection>
       <tag>HEAD</tag>
     </scm>
 
