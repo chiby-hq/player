@@ -31,6 +31,18 @@
       <developerConnection>scm:git:ssh://git@github.com/chibyhq/player.git</developerConnection>
       <tag>HEAD</tag>
     </scm>
+    
+    <build>
+        <plugins>
+            <!-- Skip deployment, we use jitpack.io -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration> <skip>true</skip> </configuration>
+            </plugin>
+	
+        </plugins>
+    </build>
 
 	<modules>
 	  <module>poms/oss-parent</module>
