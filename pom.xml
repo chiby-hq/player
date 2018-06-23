@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.chibyhq.player</groupId>
-	<artifactId>reactor</artifactId>
+	<artifactId>playar</artifactId>
 	<version>0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -40,7 +40,13 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration> <skip>true</skip> </configuration>
             </plugin>
-	
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
