@@ -19,7 +19,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.github.chibyhq.playar.DockerExecutor;
 import com.github.chibyhq.playar.model.Application;
-import com.github.chibyhq.playar.model.DockerApplicationDefinition;
 import com.github.chibyhq.playar.model.LogEntry;
 import com.github.chibyhq.playar.model.RunSession;
 import com.github.chibyhq.store.model.repositories.LogEntryRepository;
