@@ -26,9 +26,9 @@
     </licenses>
     
     <scm>
-      <url>https://github.com/chibyhq/player</url>
-      <connection>scm:git:git://github.com/chibyhq/player.git</connection>
-      <developerConnection>scm:git:ssh://git@github.com/chibyhq/player.git</developerConnection>
+      <url>https://github.com/chibyhq/playar</url>
+      <connection>scm:git:git://github.com/chibyhq/playar.git</connection>
+      <developerConnection>scm:git:ssh://git@github.com/chibyhq/playar.git</developerConnection>
       <tag>HEAD</tag>
     </scm>
     
