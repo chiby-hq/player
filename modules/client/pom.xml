@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chibyhq.player</groupId>
+        <groupId>com.github.chibyhq.playar</groupId>
         <artifactId>boot-parent</artifactId>
         <version>0.3-SNAPSHOT</version>
         <relativePath>../../poms/boot-parent</relativePath>
@@ -12,7 +12,7 @@
 	<artifactId>client</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Chiby Player :: Client API</name>
+	<name>Playar :: Client API</name>
 	<description>Provides a lightweight client API to execute playlists and monitor run sessions</description>
 
 	<properties>
@@ -37,12 +37,12 @@
 		</dependency>
 				
 		<dependency>
-			<groupId>com.github.chibyhq.player</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>model</artifactId>
 			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.chibyhq.player</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>repositories</artifactId>
 			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>

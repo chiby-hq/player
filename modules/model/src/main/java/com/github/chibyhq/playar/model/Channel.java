@@ -1,4 +1,4 @@
-package com.github.chibyhq.player.model;
+package com.github.chibyhq.playar.model;
 
 import java.util.List;
 import java.util.UUID;

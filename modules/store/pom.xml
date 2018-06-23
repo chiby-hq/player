@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chibyhq.player</groupId>
+        <groupId>com.github.chibyhq.playar</groupId>
         <artifactId>boot-parent</artifactId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../../poms/boot-parent</relativePath>
@@ -13,7 +13,7 @@
 	<artifactId>store</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Chiby Player :: Store</name>
+	<name>Playar :: Store</name>
 	<description>Provides a store for Chiby applications provides a control REST and STOMP interface</description>
 
 	<dependencies>
@@ -65,17 +65,17 @@
             <version>3.5.1</version>
         </dependency>
 		<dependency>
-			<groupId>com.github.chibyhq.player</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>model</artifactId>
 			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.chibyhq.player</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>repositories</artifactId>
 			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.chibyhq.player</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>client</artifactId>
 			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chibyhq.player</groupId>
+        <groupId>com.github.chibyhq.playar</groupId>
         <artifactId>boot-parent</artifactId>
         <version>0.3-SNAPSHOT</version>
         <relativePath>../../poms/boot-parent</relativePath>
@@ -12,7 +12,7 @@
 	<artifactId>repositories</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Chiby Player :: Repositories</name>
+	<name>Playar :: Repositories</name>
 	<description>Provides Spring Data enabled repositories</description>
 
 	<dependencies>
@@ -27,7 +27,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.chibyhq.player</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>model</artifactId>
 			<version>[0.1-SNAPSHOT,)</version>
 		</dependency>

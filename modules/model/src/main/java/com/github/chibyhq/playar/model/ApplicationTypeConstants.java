@@ -1,4 +1,4 @@
-package com.github.chibyhq.player.model;
+package com.github.chibyhq.playar.model;
 
 public interface ApplicationTypeConstants {
 	String APPLICATION_YAML_FILE = ".application.yaml";

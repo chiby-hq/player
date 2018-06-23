@@ -9,8 +9,8 @@ import org.springframework.data.map.repository.config.EnableMapRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 
-import com.github.chibyhq.player.model.Playlist;
-import com.github.chibyhq.player.model.User;
+import com.github.chibyhq.playar.model.Playlist;
+import com.github.chibyhq.playar.model.User;
 import com.github.chibyhq.store.model.repositories.PlaylistRepository;
 import com.github.chibyhq.store.model.repositories.UserRepository;
 

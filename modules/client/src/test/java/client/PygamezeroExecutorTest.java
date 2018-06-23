@@ -22,10 +22,10 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.github.chibyhq.player.PygamezeroExecutor;
-import com.github.chibyhq.player.model.Application;
-import com.github.chibyhq.player.model.LogEntry;
-import com.github.chibyhq.player.model.RunSession;
+import com.github.chibyhq.playar.PygamezeroExecutor;
+import com.github.chibyhq.playar.model.Application;
+import com.github.chibyhq.playar.model.LogEntry;
+import com.github.chibyhq.playar.model.RunSession;
 import com.github.chibyhq.store.model.repositories.LogEntryRepository;
 import com.github.chibyhq.store.model.repositories.RunSessionRepository;
 

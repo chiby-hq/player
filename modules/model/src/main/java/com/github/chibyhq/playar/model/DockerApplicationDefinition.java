@@ -1,8 +1,6 @@
-package com.github.chibyhq.player.model;
+package com.github.chibyhq.playar.model;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -10,42 +8,23 @@ import java.util.stream.Collectors;
 
 import org.springframework.data.annotation.Id;
 
-import com.querydsl.core.annotations.QueryEntity;
+import com.github.chibyhq.playar.model.secret.ISecret;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-
+/**
+ * Defines a gadget via a Docker container application.
+ * @author bcopy
+ *
+ */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder(toBuilder = true)
-@QueryEntity
-public class Application {
-
-	@Id UUID uuid = UUID.randomUUID();
-	String title;
-    User author;
-	String description;
-	String avatar;
-	
-	String contents;
-	String generatedContents;
-	
-	ApplicationTypeEnum type;
-	
-	Date createdOn;
-	Date lastUpdatedOn;
-	
-	boolean template = false;
-	
-	
-	Map<String,String> environment = new HashMap<>();
-	
-	String baseImage;
-	
+public class DockerApplicationDefinition implements IApplicationDefinition{
+	@Id UUID uuid;
+	String image;
+    ISecret credentials;
+    Map<String,String> environment;
     List<String> parameters;
     
     /**
@@ -62,6 +41,5 @@ public class Application {
 	}
     
     
-
-	
+    
 }

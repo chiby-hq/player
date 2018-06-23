@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chibyhq.player</groupId>
+        <groupId>com.github.chibyhq.playar</groupId>
         <artifactId>oss-parent</artifactId>
         <version>0.3-SNAPSHOT</version>
         <relativePath>../../poms/oss-parent</relativePath>
@@ -12,7 +12,7 @@
 	<artifactId>model</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Chiby Player :: Model</name>
+	<name>Playar :: Model</name>
 	<description>Provides model objects for Player</description>
 
 	<dependencies>

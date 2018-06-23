@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.github.chibyhq.player.model.RunSession;
+import com.github.chibyhq.playar.model.RunSession;
 
 @RepositoryRestResource()
 public interface RunSessionRepository extends CrudRepository<RunSession, UUID>{

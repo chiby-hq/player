@@ -5,8 +5,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.github.chibyhq.player.model.Playlist;
-import com.github.chibyhq.player.model.User;
+import com.github.chibyhq.playar.model.Playlist;
+import com.github.chibyhq.playar.model.User;
 import com.github.chibyhq.store.model.repositories.PlaylistRepository;
 import com.github.chibyhq.store.model.repositories.UserRepository;
 

@@ -1,4 +1,4 @@
-package com.github.chibyhq.player.model;
+package com.github.chibyhq.playar.model;
 
 import java.util.Date;
 import java.util.UUID;

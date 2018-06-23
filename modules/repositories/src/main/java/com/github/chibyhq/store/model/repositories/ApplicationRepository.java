@@ -7,7 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.github.chibyhq.player.model.Application;
+import com.github.chibyhq.playar.model.Application;
 
 @RepositoryRestResource()
 public interface ApplicationRepository extends PagingAndSortingRepository<Application, UUID>, QueryDslPredicateExecutor<Application>{

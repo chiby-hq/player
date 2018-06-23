@@ -1,9 +1,9 @@
-package com.github.chibyhq.player;
+package com.github.chibyhq.playar;
 
 import java.nio.file.Path;
 
-import com.github.chibyhq.player.model.Application;
-import com.github.chibyhq.player.model.RunSession;
+import com.github.chibyhq.playar.model.Application;
+import com.github.chibyhq.playar.model.RunSession;
 import com.spotify.docker.client.exceptions.DockerCertificateException;
 import com.spotify.docker.client.exceptions.DockerException;
 

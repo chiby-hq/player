@@ -1,4 +1,4 @@
-package com.github.chibyhq.player;
+package com.github.chibyhq.playar;
 
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -17,11 +17,11 @@ import java.util.logging.Level;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.github.chibyhq.player.model.Application;
-import com.github.chibyhq.player.model.ApplicationTypeEnum;
-import com.github.chibyhq.player.model.DockerApplicationDefinition;
-import com.github.chibyhq.player.model.LogEntry;
-import com.github.chibyhq.player.model.RunSession;
+import com.github.chibyhq.playar.model.Application;
+import com.github.chibyhq.playar.model.ApplicationTypeEnum;
+import com.github.chibyhq.playar.model.DockerApplicationDefinition;
+import com.github.chibyhq.playar.model.LogEntry;
+import com.github.chibyhq.playar.model.RunSession;
 import com.github.chibyhq.store.model.repositories.LogEntryRepository;
 import com.github.chibyhq.store.model.repositories.RunSessionRepository;
 import com.spotify.docker.client.DefaultDockerClient;

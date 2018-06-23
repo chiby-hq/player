@@ -2,9 +2,9 @@ package com.github.chibyhq.store.model.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.github.chibyhq.player.model.Playlist;
-import com.github.chibyhq.player.model.QPlaylist;
-import com.github.chibyhq.player.model.User;
+import com.github.chibyhq.playar.model.Playlist;
+import com.github.chibyhq.playar.model.QPlaylist;
+import com.github.chibyhq.playar.model.User;
 import com.querydsl.core.types.Predicate;
 
 public class PlaylistRepositoryImpl implements PlaylistRepositoryCustom {
