@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,9 +17,6 @@ import java.util.logging.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.github.chibyhq.playar.model.Application;
-import com.github.chibyhq.playar.model.ApplicationTypeEnum;
-import com.github.chibyhq.playar.model.DockerApplicationDefinition;
-import com.github.chibyhq.playar.model.LogEntry;
 import com.github.chibyhq.playar.model.RunSession;
 import com.github.chibyhq.store.model.repositories.LogEntryRepository;
 import com.github.chibyhq.store.model.repositories.RunSessionRepository;

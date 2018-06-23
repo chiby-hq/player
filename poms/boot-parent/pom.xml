@@ -9,7 +9,6 @@
 	</parent>
 	
     <artifactId>boot-parent</artifactId>
-    <version>0.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Playar :: Spring Boot parent POM</name>
 	<description>${project.name}</description>
