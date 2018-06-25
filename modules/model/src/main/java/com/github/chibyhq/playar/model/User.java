@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
+import javax.persistence.Entity;
+
 import org.springframework.data.annotation.Id;
 
 import com.querydsl.core.annotations.QueryEntity;
@@ -17,6 +19,7 @@ import com.querydsl.core.annotations.QueryEntity;
 @NoArgsConstructor
 @EqualsAndHashCode
 @QueryEntity
+@Entity
 public class User {
    @Id public String uuid = UUID.randomUUID().toString();
    public String nickname;

@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import javax.persistence.Entity;
+
 import org.springframework.data.annotation.Id;
 
 import com.querydsl.core.annotations.QueryEntity;
@@ -23,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 @QueryEntity
+@Entity
 public class Application {
 
 	@Id UUID uuid = UUID.randomUUID();

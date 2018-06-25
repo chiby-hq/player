@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+
 import org.springframework.data.annotation.Id;
 
 import com.querydsl.core.annotations.QueryEntity;
@@ -14,6 +16,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode
 @QueryEntity
+@Entity
 public class Playlist {
 	public Playlist(String id, String name, User author){
 		this.id = id;

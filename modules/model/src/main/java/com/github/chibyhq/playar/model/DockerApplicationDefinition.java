@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import javax.persistence.Entity;
+
 import org.springframework.data.annotation.Id;
 
 import com.github.chibyhq.playar.model.secret.ISecret;
@@ -20,6 +22,7 @@ import lombok.Data;
  */
 @Data
 @Builder(toBuilder = true)
+@Entity
 public class DockerApplicationDefinition implements IApplicationDefinition{
 	@Id UUID uuid;
 	String image;
