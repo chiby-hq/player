@@ -29,6 +29,7 @@ import com.github.chibyhq.store.model.repositories.LogEntryRepository;
 import com.github.chibyhq.store.model.repositories.RunSessionRepository;
 
 @RunWith(MockitoJUnitRunner.class)
+
 public class PygamezeroExecutorTest {
 	@Mock
 	LogEntryRepository logEntryRepository;

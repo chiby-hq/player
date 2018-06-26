@@ -8,9 +8,14 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import org.springframework.data.annotation.Id;
+import org.hibernate.annotations.GenericGenerator;
 
 import com.querydsl.core.annotations.QueryEntity;
 
@@ -28,9 +33,15 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Application {
 
-	@Id UUID uuid = UUID.randomUUID();
+	@Id
+	@GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
+	UUID uuid;
 	String title;
-    User author;
+    
+	@ManyToOne
+	User author;
 	String description;
 	String avatar;
 	
@@ -45,11 +56,13 @@ public class Application {
 	boolean template = false;
 	
 	
+	@ElementCollection
 	Map<String,String> environment = new HashMap<>();
 	
 	String baseImage;
 	
-    List<String> parameters;
+	@ElementCollection
+	List<String> parameters = new ArrayList<>();
     
     /**
      * Return a long string listing all environment variables
