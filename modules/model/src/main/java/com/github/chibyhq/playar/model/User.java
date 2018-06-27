@@ -8,7 +8,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.querydsl.core.annotations.QueryEntity;
 
@@ -17,8 +22,13 @@ import com.querydsl.core.annotations.QueryEntity;
 @NoArgsConstructor
 @EqualsAndHashCode
 @QueryEntity
+@Entity
 public class User {
-   @Id public String uuid = UUID.randomUUID().toString();
+   @Id 
+   @GeneratedValue(generator = "uuid2")
+   @GenericGenerator(name = "uuid2", strategy = "uuid2")
+   @Column(columnDefinition = "BINARY(16)")
+   public UUID uuid;
    public String nickname;
    /**
     * URL pointing to the user's avatar

@@ -1,14 +1,15 @@
 package com.github.chibyhq.playar.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import org.springframework.data.annotation.Id;
-
-import com.github.chibyhq.playar.model.secret.ISecret;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import lombok.Builder;
 import lombok.Data;
@@ -20,12 +21,17 @@ import lombok.Data;
  */
 @Data
 @Builder(toBuilder = true)
+@Entity
 public class DockerApplicationDefinition implements IApplicationDefinition{
 	@Id UUID uuid;
 	String image;
-    ISecret credentials;
-    Map<String,String> environment;
-    List<String> parameters;
+ //   ISecret credentials;
+	
+	@ElementCollection
+	Map<String,String> environment = new HashMap<>();
+	
+	@ElementCollection
+    List<String> parameters = new ArrayList<>();
     
     /**
      * Return a long string listing all environment variables
