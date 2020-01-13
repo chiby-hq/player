@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chibyhq.playar</groupId>
-        <artifactId>boot-parent</artifactId>
+        <groupId>com.github.chibyhq</groupId>
+        <artifactId>playar-boot-parent</artifactId>
         <version>0.4-SNAPSHOT</version>
-        <relativePath>../../poms/boot-parent</relativePath>
+        <relativePath>../../poms/boot-parent/pom.xml</relativePath>
 	</parent>
 	
-	<artifactId>repositories</artifactId>
+	<artifactId>playar-repositories</artifactId>
 	<packaging>jar</packaging>
 
 	<name>Playar :: Repositories</name>
@@ -27,9 +27,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.chibyhq.playar</groupId>
-			<artifactId>model</artifactId>
-			<version>0.4-SNAPSHOT</version>
+			<groupId>com.github.chibyhq</groupId>
+			<artifactId>playar-model</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	
