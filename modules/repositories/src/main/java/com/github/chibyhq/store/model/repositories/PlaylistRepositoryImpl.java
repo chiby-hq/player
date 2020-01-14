@@ -1,5 +1,7 @@
 package com.github.chibyhq.store.model.repositories;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.github.chibyhq.playar.model.Playlist;
@@ -13,10 +15,10 @@ public class PlaylistRepositoryImpl implements PlaylistRepositoryCustom {
 	PlaylistRepository repo;
 	
 	@Override
-	public Playlist findOneByNameAndUser(String name, User user) {
+	public Optional<Playlist> findOneByNameAndUser(String name, User user) {
 		QPlaylist playlist = new QPlaylist("playlist");
 		Predicate p = playlist.name.eq(name).and(playlist.author.uuid.eq(user.uuid));
-		Playlist result = repo.findOne(p);
+		Optional<Playlist> result = repo.findOne(p);
 		return result;
 	}
 
