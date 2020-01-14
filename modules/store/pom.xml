@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chibyhq</groupId>
+        <groupId>com.github.chibyhq.playar</groupId>
         <artifactId>playar-boot-parent</artifactId>
         <!--version>0.1-SNAPSHOT</version-->
         <relativePath>../../poms/boot-parent</relativePath>
@@ -65,17 +65,17 @@
             <version>3.5.1</version>
         </dependency>
 		<dependency>
-			<groupId>com.github.chibyhq</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>playar-model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.chibyhq</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>playar-repositories</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.chibyhq</groupId>
+			<groupId>com.github.chibyhq.playar</groupId>
 			<artifactId>playar-client</artifactId>
 			<version>${project.version}</version>
 		</dependency>

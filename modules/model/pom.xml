@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chibyhq</groupId>
+        <groupId>com.github.chibyhq.playar</groupId>
         <artifactId>oss-parent</artifactId>
         <version>0.4-SNAPSHOT</version>
         <relativePath>../../poms/oss-parent</relativePath>
