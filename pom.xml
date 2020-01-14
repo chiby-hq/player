@@ -4,7 +4,7 @@
 
 	<groupId>com.github.chibyhq</groupId>
 	<artifactId>playar-reactor</artifactId>
-	<version>0.5.2</version>
+	<version>0.5.3</version>
 	<packaging>pom</packaging>
 
 	<name>Playar :: reactor project</name>
