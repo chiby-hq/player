@@ -110,6 +110,8 @@
 				<version>2.5</version>
 				<configuration>
 					<generateBackupPoms>false</generateBackupPoms>
+					<processParent>true</processParent>
+					<processAllModules>true</processAllModules>
 				</configuration>
 			</plugin>
 			
