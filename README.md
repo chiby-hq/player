@@ -1,5 +1,9 @@
 # Chiby Playar
 
+[![](https://jitpack.io/v/chibyhq/playar.svg)](https://jitpack.io/#chibyhq/playar) 
+[![GitHub Actions Status](https://github.com/chibyhq/playar/workflows/Java%20CI/badge.svg)](https://github.com/chibyhq/playar/actions)
+[![Java 11](https://img.shields.io/badge/Java-11-purple "Java 11")](https://java.com)
+
 Chiby Playar is a container-controller daemon that provides a playlist model for container applications.
 It allows to run a sequence of applications, feed them with parameters, grant them security privileges selectively etc...
 
