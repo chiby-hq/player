@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.github.chibyhq.playar</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>0.4-SNAPSHOT</version>
+        <version>0.5.5-SNAPSHOT</version>
         <relativePath>../../poms/oss-parent</relativePath>
 	</parent>
 	
-	<artifactId>model</artifactId>
+	<artifactId>playar-model</artifactId>
 	<packaging>jar</packaging>
 
 	<name>Playar :: Model</name>
@@ -37,8 +37,10 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 		</dependency>
-
-
+		<dependency>
+		  <groupId>javax.annotation</groupId>
+		  <artifactId>javax.annotation-api</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

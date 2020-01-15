@@ -92,7 +92,6 @@ public class DockerExecutor implements IApplicationExecutor {
 		final ContainerCreation creation = docker.createContainer(config);
 
 		docker.startContainer(creation.id());
-
 		session.setExecutionId(creation.id());
 		session.setRunning(true);
 		session.setStopped(false);
